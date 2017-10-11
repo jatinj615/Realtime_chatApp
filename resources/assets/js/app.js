@@ -11,6 +11,7 @@ window.Vue = require('vue');
 
 import Vue from 'vue'
 import VueChatScroll from 'vue-chat-scroll'
+import Toaster from 'v-toaster'
 Vue.use(VueChatScroll)
 
 /**
@@ -31,7 +32,8 @@ const app = new Vue({
     		color:[],
     		time:[]
     	},
-    	typing: ''
+    	typing: '',
+    	numberOfUsers: 0
     },
     watch:{
     	message(){
@@ -82,13 +84,13 @@ const app = new Vue({
     	    });
     	Echo.join(`chat`)
     	    .here((users) => {
-    	        console.log(users);
+    	    	this.numberOfUsers = users.length;
     	    })
     	    .joining((user) => {
-    	        //console.log(user.name);
+    	    	this.numberOfUsers += 1;
     	    })
     	    .leaving((user) => {
-    	        //console.log(user.name);
+    	    	this.numberOfUsers -= 1;
     	    });
     }
 });
