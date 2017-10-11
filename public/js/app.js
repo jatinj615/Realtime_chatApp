@@ -11067,6 +11067,13 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         _this2.typing = '';
       }
     });
+    Echo.join('chat').here(function (users) {
+      console.log(users);
+    }).joining(function (user) {
+      //console.log(user.name);
+    }).leaving(function (user) {
+      //console.log(user.name);
+    });
   }
 });
 
