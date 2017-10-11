@@ -26,13 +26,16 @@ const app = new Vue({
     data:{
     	message:'',
     	chat:{
-    		message:[]
+    		message:[],
+    		user:[]
     	}
     },
     methods:{
     	send(){
     		if (this.message.length > 0 ) {
     			this.chat.message.push(this.message);
+    			this.chat.user.push('You');
+
     			axios.post('/send', {
     				message : this.message
     			  })
@@ -49,7 +52,8 @@ const app = new Vue({
     mounted(){
     	Echo.private('chat')
     	    .listen('ChatEvent', (e) => {
-    	        console.log(e);
+    	        this.chat.message.push(e.message);
+    	        this.chat.message.push(e.message);
     	    });
 
     }
