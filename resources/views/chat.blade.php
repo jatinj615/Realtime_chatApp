@@ -16,14 +16,16 @@
 <body>
 	<div class="container">
 		<div class="row" id="app">
-			<div class="col-4 mx-auto">
+			<div class="col-6 mx-auto">
 				<li class="list-group-item active">Chat Room</li>
+				<div class="badge badge-pill badge-primary">@{{ typing }}</div>
 				<ul class="list-group" v-chat-scroll>
 				  <message
 					v-for = "value,index in chat.message"
 					:key = value.index
 					:color = chat.color[index]
 					:user = chat.user[index]
+					:time = chat.time[index]
 				  >
 				  	@{{ value }}
 				  </message>
