@@ -11042,7 +11042,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
     Echo.private('chat').listen('ChatEvent', function (e) {
       _this2.chat.message.push(e.message);
-      _this2.chat.message.push(e.message);
+      _this2.chat.user.push(e.user);
     });
   }
 });

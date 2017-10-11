@@ -53,7 +53,7 @@ const app = new Vue({
     	Echo.private('chat')
     	    .listen('ChatEvent', (e) => {
     	        this.chat.message.push(e.message);
-    	        this.chat.message.push(e.message);
+    	        this.chat.user.push(e.user);
     	    });
 
     }
