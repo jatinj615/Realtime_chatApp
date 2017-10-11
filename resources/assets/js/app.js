@@ -27,7 +27,8 @@ const app = new Vue({
     	message:'',
     	chat:{
     		message:[],
-    		user:[]
+    		user:[],
+    		color:[]
     	}
     },
     methods:{
@@ -35,6 +36,7 @@ const app = new Vue({
     		if (this.message.length > 0 ) {
     			this.chat.message.push(this.message);
     			this.chat.user.push('You');
+    			this.chat.color.push('success');
 
     			axios.post('/send', {
     				message : this.message
@@ -54,6 +56,7 @@ const app = new Vue({
     	    .listen('ChatEvent', (e) => {
     	        this.chat.message.push(e.message);
     	        this.chat.user.push(e.user);
+    	        this.chat.color.push('warning')
     	    });
 
     }
